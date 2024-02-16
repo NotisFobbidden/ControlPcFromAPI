@@ -50,11 +50,9 @@ def get_queue():
 
 def pp_queue():
     now = time()
-    queue_summary = ''
-    print('[ + ] Task queue:')
+    queue_summary = '[ + ] Task queue:\n'
     for t, f in get_queue().items():
         queue_summary += f'{format_action(f)}{round(t - now, 2)} seconds\n'
-    print(queue_summary)
     return queue_summary
 
 def run_action(request):
