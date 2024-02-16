@@ -15,4 +15,5 @@ def get_request():
 
 @app.route('/', methods=['GET'])
 def get_request_get():
-    return pp_queue()
+    queue_sum = pp_queue()
+    return queue_sum

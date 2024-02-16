@@ -28,6 +28,5 @@ const click = () => send_request_with_time("click_action", "click_in");
 const type_string = () => send_request_with_time("type_action", "type_in", document.getElementById("type_text").value);
 setInterval(async () => {
     const queue_paragraph = document.getElementById("queue");
-    console.log(queue_paragraph)
-    queue_paragraph.innerText = await get_queue();
+    queue_paragraph.innerText = 'await get_queue()';
 }, 500);
