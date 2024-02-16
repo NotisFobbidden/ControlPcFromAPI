@@ -1,0 +1,30 @@
+.centerThis {
+    border: 1px solid;
+    margin: 5px;
+    width: 100%;
+    padding: 5px;
+}
+
+p {
+   text-align: center;
+}
+
+#shutdown {
+    width: 50px;
+}
+
+#input_for_time {
+    width: 50px;
+    display: flex;
+}
+
+.buttons {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    border: 1px solid;
+    margin: auto;
+    width: 25%;
+    padding: 5px;
+}

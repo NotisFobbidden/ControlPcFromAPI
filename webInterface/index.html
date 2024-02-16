@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css", type="text/css">
+        <meta charset="utf-8">
+        <title>Web Interface</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="get_action.js"></script>
+    </head>
+    <body>
+        <div class="centerThis">
+            <p>Shutdown PC in <input id="shutdown_in" type="number" class="input_for_time"> minutes</p>
+            <br>
+            <button onclick="shutdown()" id="shutdown_button" class="buttons">Shutdown</button>
+        </div>
+        <div class="centerThis">
+            <p>Restart PC in <input id="restart_in" type="number" class="input_for_time"> minutes</p>
+            <br>
+            <button onclick="restart()" id="restart_button" class="buttons">Restart</button>
+        </div>
+        <div class="centerThis">
+            <p>Make a click in <input id="click_in" type="number" class="input_for_time"> minutes</p>
+            <br>
+            <button onclick="click()" id="shutdown_button" class="buttons">Click</button>
+        </div>
+        <div class="centerThis">
+            <p>Type <input type="text" id="type_text"></input> in <input id="type_in" type="number" class="input_for_time"> minutes</p>
+            <br>
+            <button onclick="type_string()" id="shutdown_button" class="buttons">Type</button>
+        </div>
+    </body>
+</html>
