@@ -7,14 +7,12 @@ async function send_request(time: string, action: string, text?: any): Promise<v
             'time' : time,
             'action' : action,
             'text' : text
-        }),
-        mode : 'no-cors'
+        })
     })
 }
 async function get_queue(): Promise<string> {
     return await fetch('http://localhost:8080/', {
-        "method" : "GET",
-        mode : 'no-cors'
+        "method" : "GET"
     }).then((response) => response.text())
 }
 
@@ -26,7 +24,7 @@ async function send_request_with_time(action_name: string, input_id: string, tex
 
 const shutdown = () => send_request_with_time("shutdown_action", "shutdown_in") 
 const restart = () => send_request_with_time("restart_action", "restart_in")
-const click = () => send_request_with_time("click_action", "click_in")
+const make_click = () => send_request_with_time('click_action', "click_in")
 const type_string = () => send_request_with_time("type_action", "type_in", (document.getElementById("type_text") as HTMLInputElement).value)
 
 setInterval(async () => {

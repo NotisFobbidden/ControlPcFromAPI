@@ -7,14 +7,12 @@ async function send_request(time, action, text) {
             'time': time,
             'action': action,
             'text': text
-        }),
-        mode: 'no-cors'
+        })
     });
 }
 async function get_queue() {
     return await fetch('http://localhost:8080/', {
-        "method": "GET",
-        mode: 'no-cors'
+        "method": "GET"
     }).then((response) => response.text());
 }
 async function send_request_with_time(action_name, input_id, text) {
@@ -24,9 +22,9 @@ async function send_request_with_time(action_name, input_id, text) {
 }
 const shutdown = () => send_request_with_time("shutdown_action", "shutdown_in");
 const restart = () => send_request_with_time("restart_action", "restart_in");
-const click = () => send_request_with_time("click_action", "click_in");
+const make_click = () => send_request_with_time('click_action', "click_in");
 const type_string = () => send_request_with_time("type_action", "type_in", document.getElementById("type_text").value);
 setInterval(async () => {
-    const queue_paragraph = document.getElementById("queue");
-    queue_paragraph.innerText = 'await get_queue()';
-}, 500);
+    const queue_container = document.getElementById("queue");
+    queue_container.innerHTML = await get_queue();
+}, 100);
