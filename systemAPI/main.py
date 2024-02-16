@@ -2,7 +2,7 @@ from http.server import *
 from threading import Thread
 from api import app
 import os
-from scheduler import executor
+from scheduler import executor, pp_queue
 
 class CustomRequestHandler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
@@ -13,10 +13,8 @@ def run_server():
     host = '127.0.0.1'
     port = 8000
     server_address = (host, port)
-    
     httpd = HTTPServer(server_address, CustomRequestHandler)
     print(f"Server running at http://{host}:{port}")
-    
     httpd.serve_forever()
  
 def main():

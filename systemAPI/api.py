@@ -1,4 +1,4 @@
-from scheduler import schedule
+from scheduler import schedule, run_action, pp_queue
 import system
 from flask import *
 import pyautogui as pag
@@ -10,17 +10,9 @@ app = Flask(__name__)
 def get_request():
     print('[ + ] Got request')
     json_action_info = request.get_json(force=True)
-    process_request(json_action_info)
+    schedule(json_action_info, int(json_action_info['time']))
     return {"status": "ok"}
 
-def process_request(request):
-    timeout = int(request['time'])
-    match request['action']:
-        case 'shutdown_action':
-            schedule(system.shutdown(), timeout)
-        case 'restart_action':
-            schedule(system.restart(), timeout)
-        case 'click_action':
-            schedule(pag.click(), timeout)
-        case 'type_action':
-            schedule(pag.write(request['text'], interval=0.15), timeout)
+@app.route('/', methods=['GET'])
+def get_request_get():
+    return pp_queue()

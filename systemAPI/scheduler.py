@@ -1,6 +1,8 @@
 from sortedcontainers import SortedDict
 from threading import Event, Thread
-from time import time
+from time import time, ctime
+import system
+import pyautogui as pag
 
 queue = SortedDict({})
 recheck_signal = Event()
@@ -24,17 +26,17 @@ def run_tasks():
             # If it's time to run this shit
             if queue.peekitem(0)[0] <= now:
                 # Run this shit
-                func = queue.popitem(0)[1]
-                Thread(target=func, daemon=True).start()
+                action = queue.popitem(0)[1]
+                Thread(target=lambda: run_action(action), daemon=True).start()
             else:
                 break
         except:
             # If we ran out of elements
             break
         
-def schedule(task, timeout):
+def schedule(action, timeout):
     deadline = time() + timeout
-    queue.update({deadline: task})
+    queue.update({deadline: action})
     try:
         # If the new task is to be executed earlier than the current earlist one
         if queue.peekitem(0) >= deadline:
@@ -48,5 +50,32 @@ def get_queue():
 
 def pp_queue():
     now = time()
+    queue_summary = ''
+    print('[ + ] Task queue:')
     for t, f in get_queue().items():
-        print(f"{f} runs in {t - now} secs")
+        queue_summary += f'{format_action(f)}{round(t - now, 2)} seconds'
+    print(queue_summary)
+    return queue_summary
+
+def run_action(request):
+    match request['action']:
+        case 'shutdown_action':
+            system.shutdown()
+        case 'restart_action':
+            system.restart()
+        case 'click_action':
+            pag.click()
+        case 'type_action':
+            pag.write(request['text'], interval=0.15)
+
+def format_action(request):
+    match request['action']:
+        case 'shutdown_action':
+            return 'Shutting computer down in '
+        case 'restart_action':
+            return 'Restarting computer in '
+        case 'click_action':
+            return 'Making a click in '
+        case 'type_action':
+            text = request['text']
+            return f'Typing {text} in '
