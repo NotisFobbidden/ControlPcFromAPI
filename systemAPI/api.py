@@ -11,7 +11,7 @@ def get_request():
     print('[ + ] Got request')
     json_action_info = request.get_json(force=True)
     process_request(json_action_info)
-    return True
+    return {"status": "ok"}
 
 def process_request(request):
     timeout = int(request['time'])

@@ -1,6 +1,6 @@
 from sortedcontainers import SortedDict
 from threading import Event, Thread
-from time import time, sleep
+from time import time
 
 queue = SortedDict({})
 recheck_signal = Event()
