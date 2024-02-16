@@ -1,9 +1,5 @@
-# $ pip install sortedcontainers
-from flask import *
 from http.server import *
-from sortedcontainers import SortedDict
-from threading import Event, Thread
-from time import time, sleep
+from threading import Thread
 from api import app
 import os
 from scheduler import executor
