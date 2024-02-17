@@ -1,5 +1,8 @@
 import os
 
+# Nt = Windows
+# Posix = Unix
+
 def shutdown():
     if os.name == 'nt':
         os.system('shutdown /s /t 0')

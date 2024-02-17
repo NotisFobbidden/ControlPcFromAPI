@@ -2,7 +2,7 @@ from http.server import *
 from threading import Thread
 from api import app
 import os
-from scheduler import executor, pp_queue
+from scheduler import executor
 
 class CustomRequestHandler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):

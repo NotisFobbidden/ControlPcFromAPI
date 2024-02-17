@@ -1,8 +1,6 @@
 from scheduler import schedule, run_action, pp_queue
-import system
 from flask import *
 from flask_cors import CORS
-import pyautogui as pag
 
 app = Flask(__name__)
 CORS(app)

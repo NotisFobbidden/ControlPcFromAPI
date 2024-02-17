@@ -1,6 +1,6 @@
 from sortedcontainers import SortedDict
 from threading import Event, Thread
-from time import time, ctime
+from time import time
 import system
 import pyautogui as pag
 
@@ -38,7 +38,7 @@ def schedule(action, timeout):
     deadline = time() + timeout
     queue.update({deadline: action})
     try:
-        # If the new task is to be executed earlier than the current earlist one
+        # If the new task is to be executed earlier than the current earliest one
         if queue.peekitem(0) >= deadline:
             # Send a recheck signal
             recheck_signal.set()
@@ -48,6 +48,8 @@ def schedule(action, timeout):
 def get_queue():
     return queue
 
+
+# Return the queue in a pretty way to show it on the page
 def pp_queue():
     now = time()
     queue_summary = ''
@@ -66,6 +68,8 @@ def run_action(request):
         case 'type_action':
             pag.write(request['text'], interval=0.15)
 
+
+# Just a function for pretty formating of the text for queue and debugging
 def format_action(request):
     match request['action']:
         case 'shutdown_action':
