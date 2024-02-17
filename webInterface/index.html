@@ -7,29 +7,31 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="get_action.js"></script>
+        <h2>Scheduler Control Panel</h2>
     </head>
     <body>
         <div class="centerThis">
-            <p>Shutdown PC in <input id="shutdown_in" type="number" class="input_for_time"> minutes</p>
+            <p>Shutdown PC in <input id="shutdown_in" class="input_for_time"> seconds</p>
             <br>
             <button onclick="shutdown()" id="shutdown_button" class="buttons">Shutdown</button>
         </div>
         <div class="centerThis">
-            <p>Restart PC in <input id="restart_in" type="number" class="input_for_time"> minutes</p>
+            <p>Restart PC in <input id="restart_in"  class="input_for_time"> seconds</p>
             <br>
             <button onclick="restart()" id="restart_button" class="buttons">Restart</button>
         </div>
         <div class="centerThis">
-            <p>Make a click in <input id="click_in" type="number" class="input_for_time"> minutes</p>
+            <p>Make a click in <input id="click_in"  class="input_for_time"> seconds</p>
             <br>
             <button onclick="make_click()" id="click_button" class="buttons">Click</button>
         </div>
         <div class="centerThis">
-            <p>Type <input type="text" id="type_text"></input> in <input id="type_in" type="number" class="input_for_time"> minutes</p>
+            <p>Type <input type="text" id="type_text"></input> in <input id="type_in"  class="input_for_time"> seconds</p>
             <br>
             <button onclick="type_string()" id="type_button" class="buttons">Type</button>
         </div>
-        <div class="centerThis">
+        <h2>Queue</h2>
+        <div class="centerThis" id="queue_container">
             <p id="queue">
 
             </p>
