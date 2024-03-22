@@ -32,7 +32,7 @@ class Queue():
                 if self.queue.peekitem(0)[0] <= now:
                     # Run this shit
                     action = self.queue.popitem(0)[1]
-                    Thread(target=lambda: run_action(action), daemon=True).start()
+                    Thread(target=lambda: self.run_action(action), daemon=True).start()
                 else:
                     break
             except:
